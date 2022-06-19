@@ -23,7 +23,7 @@ namespace AttendanceManagement.Application
             _mapper = mapper;
         }
 
-        public async Task CreateOrUpdateUser(EnquiryDto input)
+        public async Task CreateOrUpdate(EnquiryDto input)
         {
             if (input.Id.HasValue)
             {

@@ -49,6 +49,23 @@ namespace AttendanceManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Enquiries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    Phone = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Remark = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enquiries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoleMasters",
                 columns: table => new
                 {
@@ -69,8 +86,10 @@ namespace AttendanceManagement.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     AttendanceDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    TimeIn = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    TimeOut = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    LeaveFromDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    LeaveToDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    TimeIn = table.Column<TimeSpan>(type: "interval", nullable: true),
+                    TimeOut = table.Column<TimeSpan>(type: "interval", nullable: true),
                     AttendanceTypeId = table.Column<int>(type: "integer", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true)
                 },
@@ -190,6 +209,9 @@ namespace AttendanceManagement.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AttendanceDetails");
+
+            migrationBuilder.DropTable(
+                name: "Enquiries");
 
             migrationBuilder.DropTable(
                 name: "UserMasters");

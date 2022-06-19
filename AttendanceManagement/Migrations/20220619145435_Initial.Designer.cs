@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AttendanceManagement.Migrations
 {
     [DbContext(typeof(AttendanceManagementDbContext))]
-    [Migration("20220619135037_Initial")]
+    [Migration("20220619145435_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,10 +37,16 @@ namespace AttendanceManagement.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<TimeSpan>("TimeIn")
+                    b.Property<DateTime?>("LeaveFromDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime?>("LeaveToDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<TimeSpan?>("TimeIn")
                         .HasColumnType("interval");
 
-                    b.Property<TimeSpan>("TimeOut")
+                    b.Property<TimeSpan?>("TimeOut")
                         .HasColumnType("interval");
 
                     b.Property<int>("UserId")
@@ -155,6 +161,33 @@ namespace AttendanceManagement.Migrations
                             Id = 1,
                             Name = "Admin"
                         });
+                });
+
+            modelBuilder.Entity("AttendanceManagement.Entities.Enquiry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Enquiries");
                 });
 
             modelBuilder.Entity("AttendanceManagement.Entities.RoleMaster", b =>

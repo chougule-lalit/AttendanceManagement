@@ -8,7 +8,7 @@ namespace AttendanceManagement.Contract
 {
     public interface IEnquiryAppService
     {
-        Task CreateOrUpdateUser(EnquiryDto input);
+        Task CreateOrUpdate(EnquiryDto input);
         Task<EnquiryDto> GetAsync(int id);
         Task DeleteAsync(int id);
         Task<PagedResultDto<EnquiryDto>> FetchEnquiryListAsync(GetEnquiryInputDto input);

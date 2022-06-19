@@ -21,9 +21,9 @@ namespace AttendanceManagement.Controllers
 
         [HttpPost]
         [Route("createOrUpdate")]
-        public virtual Task CreateOrUpdateUser(EnquiryDto input)
+        public virtual Task CreateOrUpdate(EnquiryDto input)
         {
-            return _enquiryAppService.CreateOrUpdateUser(input);
+            return _enquiryAppService.CreateOrUpdate(input);
         }
 
         [HttpDelete]

@@ -24,6 +24,9 @@ namespace AttendanceManagement
 
             CreateMap<Enquiry, EnquiryDto>()
                 .ReverseMap();
+
+            CreateMap<AttendanceDetail, AttendanceDetailDto>()
+                .ReverseMap();
         }
     }
 }
