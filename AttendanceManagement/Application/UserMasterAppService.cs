@@ -47,6 +47,8 @@ namespace AttendanceManagement.Application
         {
             var data = from u in _dbContext.UserMasters
                        join r in _dbContext.RoleMasters on u.RoleId equals r.Id
+                       join d in _dbContext.Designations on u.DesignationId equals d.Id
+                       join dp in _dbContext.Departments on u.DepartmentId equals dp.Id
                        select new UserMasterDto
                        {
                            Email = u.Email,
@@ -55,7 +57,11 @@ namespace AttendanceManagement.Application
                            Id = u.Id,
                            Phone = u.Phone,
                            RoleId = r.Id,
-                           RoleName = r.Name
+                           RoleName = r.Name,
+                           DepartmentId = u.DepartmentId,
+                           DesignationId = u.DesignationId,
+                           DepartmentName = dp.Name,
+                           DesignationName = d.Name
                        };
 
             if (!string.IsNullOrEmpty(input.Search))

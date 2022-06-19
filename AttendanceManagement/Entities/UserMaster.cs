@@ -5,20 +5,28 @@ using System.Threading.Tasks;
 
 namespace AttendanceManagement.Entities
 {
-    public class UserMaster
+    public class UserMaster : BaseEntity
     {
-        public int Id { get; set; }
+        public virtual string FirstName { get; set; }
 
-        public string FirstName { get; set; }
+        public virtual string LastName { get; set; }
 
-        public string LastName { get; set; }
+        public virtual string Email { get; set; }
 
-        public string Email { get; set; }
+        public virtual string Phone { get; set; }
 
-        public string Phone { get; set; }
-
-        public RoleMaster Role { get; set; }
+        public virtual RoleMaster Role { get; set; }
         
-        public int RoleId { get; set; }
+        public virtual int RoleId { get; set; }
+
+        public virtual string Password { get; set; }
+
+        public virtual Designation Designation { get; set; }
+
+        public virtual int DesignationId { get; set; }
+
+        public virtual Department Department { get; set; }
+
+        public virtual int DepartmentId { get; set; }
     }
 }

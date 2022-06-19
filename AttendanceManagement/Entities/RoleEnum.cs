@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace AttendanceManagement.Entities
 {
-    public class RoleMaster : BaseEntity
+    public enum RoleEnum
     {
-        public virtual string Name { get; set; }
+        Admin = 1,
+        Manageer = 2,
+        Associate = 3
     }
 }

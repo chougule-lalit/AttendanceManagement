@@ -21,6 +21,14 @@ namespace AttendanceManagement.Contract.Dto
         public int RoleId { get; set; }
 
         public string RoleName { get; set; }
+
+        public virtual string DesignationName { get; set; }
+
+        public virtual int DesignationId { get; set; }
+
+        public virtual string DepartmentName { get; set; }
+
+        public virtual int DepartmentId { get; set; }
     }
 
     public class UserMasterCreateUpdateDto

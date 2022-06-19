@@ -21,6 +21,9 @@ namespace AttendanceManagement
 
             CreateMap<RoleMaster, RoleMasterDto>()
                 .ReverseMap();
+
+            CreateMap<Enquiry, EnquiryDto>()
+                .ReverseMap();
         }
     }
 }
