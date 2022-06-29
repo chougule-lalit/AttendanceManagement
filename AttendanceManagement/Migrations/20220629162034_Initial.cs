@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AttendanceManagement.Migrations
 {
@@ -12,10 +11,10 @@ namespace AttendanceManagement.Migrations
                 name: "AttendanceTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Type = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Type = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,9 +25,9 @@ namespace AttendanceManagement.Migrations
                 name: "Departments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,9 +38,9 @@ namespace AttendanceManagement.Migrations
                 name: "Designations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,13 +51,13 @@ namespace AttendanceManagement.Migrations
                 name: "Enquiries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    Remark = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
+                    LastName = table.Column<string>(type: "TEXT", nullable: true),
+                    Phone = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Remark = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,9 +68,9 @@ namespace AttendanceManagement.Migrations
                 name: "RoleMasters",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,16 +81,16 @@ namespace AttendanceManagement.Migrations
                 name: "AttendanceDetails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    AttendanceDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    LeaveFromDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    LeaveToDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    TimeIn = table.Column<TimeSpan>(type: "interval", nullable: true),
-                    TimeOut = table.Column<TimeSpan>(type: "interval", nullable: true),
-                    AttendanceTypeId = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AttendanceDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LeaveFromDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    LeaveToDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    TimeIn = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    TimeOut = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    AttendanceTypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,16 +107,16 @@ namespace AttendanceManagement.Migrations
                 name: "UserMasters",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    RoleId = table.Column<int>(type: "integer", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: true),
-                    DesignationId = table.Column<int>(type: "integer", nullable: false),
-                    DepartmentId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
+                    LastName = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Phone = table.Column<string>(type: "TEXT", nullable: true),
+                    RoleId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: true),
+                    DesignationId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DepartmentId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,24 +144,42 @@ namespace AttendanceManagement.Migrations
             migrationBuilder.InsertData(
                 table: "AttendanceTypes",
                 columns: new[] { "Id", "Description", "Type" },
-                values: new object[,]
-                {
-                    { 1, "Present", "Present" },
-                    { 2, "Personal Leave", "Personal Leave" },
-                    { 3, "Sick Leave", "Sick Leave" },
-                    { 4, "Casual Leave", "Casual Leave" },
-                    { 5, "Comp Off", "Comp Off" }
-                });
+                values: new object[] { 1, "Present", "Present" });
+
+            migrationBuilder.InsertData(
+                table: "AttendanceTypes",
+                columns: new[] { "Id", "Description", "Type" },
+                values: new object[] { 2, "Personal Leave", "Personal Leave" });
+
+            migrationBuilder.InsertData(
+                table: "AttendanceTypes",
+                columns: new[] { "Id", "Description", "Type" },
+                values: new object[] { 3, "Sick Leave", "Sick Leave" });
+
+            migrationBuilder.InsertData(
+                table: "AttendanceTypes",
+                columns: new[] { "Id", "Description", "Type" },
+                values: new object[] { 4, "Casual Leave", "Casual Leave" });
+
+            migrationBuilder.InsertData(
+                table: "AttendanceTypes",
+                columns: new[] { "Id", "Description", "Type" },
+                values: new object[] { 5, "Comp Off", "Comp Off" });
 
             migrationBuilder.InsertData(
                 table: "Departments",
                 columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Admin" },
-                    { 2, "HR" },
-                    { 3, "IT" }
-                });
+                values: new object[] { 1, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "HR" });
+
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "IT" });
 
             migrationBuilder.InsertData(
                 table: "Designations",
@@ -172,12 +189,17 @@ namespace AttendanceManagement.Migrations
             migrationBuilder.InsertData(
                 table: "RoleMasters",
                 columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Admin" },
-                    { 2, "Manageer" },
-                    { 3, "Associate" }
-                });
+                values: new object[] { 1, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "RoleMasters",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "Manageer" });
+
+            migrationBuilder.InsertData(
+                table: "RoleMasters",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Associate" });
 
             migrationBuilder.InsertData(
                 table: "UserMasters",

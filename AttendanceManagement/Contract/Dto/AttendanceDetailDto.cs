@@ -17,9 +17,9 @@ namespace AttendanceManagement.Contract.Dto
 
         public DateTime? LeaveToDate { get; set; }
 
-        public TimeSpan TimeIn { get; set; }
+        public DateTime? TimeIn { get; set; }
 
-        public TimeSpan TimeOut { get; set; }
+        public DateTime? TimeOut { get; set; }
 
         public int AttendanceTypeId { get; set; }
 

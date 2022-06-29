@@ -54,4 +54,20 @@ namespace AttendanceManagement.Contract.Dto
 
         public string Search { get; set; }
     }
+
+    public class LoginInputDto
+    {
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+    }
+
+    public class LoginOutputDto
+    {
+        public int Id { get; set; }
+
+        public RoleEnum Role { get; set; }
+
+        public bool IsSuccess { get; set; }
+    }
 }

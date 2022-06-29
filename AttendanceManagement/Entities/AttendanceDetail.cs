@@ -15,9 +15,9 @@ namespace AttendanceManagement.Entities
 
         public  virtual DateTime? LeaveToDate { get; set; }
 
-        public virtual TimeSpan? TimeIn { get; set; }
+        public virtual DateTime? TimeIn { get; set; }
 
-        public virtual TimeSpan? TimeOut { get; set; }
+        public virtual DateTime? TimeOut { get; set; }
 
         public virtual AttendanceType AttendanceType { get; set; }
 

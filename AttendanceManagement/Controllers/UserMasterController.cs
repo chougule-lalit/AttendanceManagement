@@ -44,5 +44,12 @@ namespace AttendanceManagement.Controllers
         {
             return _userMasterAppService.FetchUserListAsync(input);
         }
+
+        [HttpPost]
+        [Route("login")]
+        public virtual Task<LoginOutputDto> LoginAsync(LoginInputDto input)
+        {
+            return _userMasterAppService.LoginAsync(input);
+        }
     }
 }

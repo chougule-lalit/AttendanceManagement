@@ -31,9 +31,7 @@ namespace AttendanceManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<AttendanceManagementDbContext>(x => x.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
-
-            //services.AddDbContext<AttendanceManagementDbContext>(x => x.UseSqlServer(_configuration.GetConnectionString("SQLServer")));
+            services.AddDbContext<AttendanceManagementDbContext>(x => x.UseSqlite(_configuration.GetConnectionString("SQLite")));
 
             services.AddTransient<IUserMasterAppService, UserMasterAppService>();
             services.AddTransient<IRoleMasterAppService, RoleMasterAppService>();
