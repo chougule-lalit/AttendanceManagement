@@ -3,6 +3,7 @@ using AttendanceManagement.Contract.Dto;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AttendanceManagement.Controllers
 {
@@ -32,7 +33,7 @@ namespace AttendanceManagement.Controllers
         }
 
         [HttpGet]
-        [Route("getUser")]
+        [Route("getUser/{id}")]
         public virtual Task<UserMasterDto> GetUserAsync(int id)
         {
             return _userMasterAppService.GetUserAsync(id);
@@ -50,6 +51,13 @@ namespace AttendanceManagement.Controllers
         public virtual Task<LoginOutputDto> LoginAsync(LoginInputDto input)
         {
             return _userMasterAppService.LoginAsync(input);
+        }
+
+        [HttpGet]
+        [Route("getUserListPerRoleDropDown/{roleId}")]
+        public virtual Task<List<UserDropdownDto>> GetUserListPerRoleDropDownAsync(int roleId)
+        {
+            return _userMasterAppService.GetUserListPerRoleDropDownAsync(roleId);
         }
     }
 }

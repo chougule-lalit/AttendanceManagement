@@ -59,6 +59,7 @@ namespace AttendanceManagement.Application
             if (data != null)
             {
                 _dbContext.Enquiries.Remove(data);
+                await _dbContext.SaveChangesAsync();
             }
         }
 

@@ -39,5 +39,19 @@ namespace AttendanceManagement.Controllers
         {
             return _roleMasterAppService.GetRoleAsync(id);
         }
+
+        [HttpPost]
+        [Route("fetchRolesList")]
+        public virtual Task<PagedResultDto<RoleMasterDto>> FetchRolesListAsync(GetRoleInputDto input)
+        {
+            return _roleMasterAppService.FetchRolesListAsync(input);
+        }
+        [HttpGet]
+        [Route("getRoleDropdown")]
+        public virtual Task<List<RoleDropdownDto>> GetRoleDropdownAsync()
+        {
+            return _roleMasterAppService.GetRoleDropdownAsync();
+        }
+
     }
 }

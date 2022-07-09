@@ -43,7 +43,14 @@ namespace AttendanceManagement.Contract.Dto
 
         public string Phone { get; set; }
 
+        public string Password { get; set; }
+
         public int RoleId { get; set; }
+
+        public int DesignationId { get; set; }
+
+        public int DepartmentId { get; set; }
+
     }
 
     public class GetUserInput
@@ -69,5 +76,12 @@ namespace AttendanceManagement.Contract.Dto
         public RoleEnum Role { get; set; }
 
         public bool IsSuccess { get; set; }
+    }
+
+    public class UserDropdownDto
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
     }
 }

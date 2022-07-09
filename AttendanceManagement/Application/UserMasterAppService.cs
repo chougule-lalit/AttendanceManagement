@@ -96,6 +96,7 @@ namespace AttendanceManagement.Application
             if (user != null)
             {
                 _dbContext.UserMasters.Remove(user);
+                await _dbContext.SaveChangesAsync();
             }
         }
 
@@ -118,5 +119,15 @@ namespace AttendanceManagement.Application
             return output;
         }
 
+        public async Task<List<UserDropdownDto>> GetUserListPerRoleDropDownAsync(int roleId)
+        {
+            return await _dbContext.UserMasters.Where(x => x.RoleId == roleId)
+                .Select(x => new UserDropdownDto
+                {
+                    Id = x.Id,
+                    Name = $"{x.FirstName} {x.LastName}"
+                })
+                .ToListAsync();
+        }
     }
 }

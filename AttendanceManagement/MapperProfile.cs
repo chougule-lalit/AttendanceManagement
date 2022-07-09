@@ -25,6 +25,12 @@ namespace AttendanceManagement
             CreateMap<Enquiry, EnquiryDto>()
                 .ReverseMap();
 
+            CreateMap<Designation, DesignationDto>()
+                .ReverseMap();
+
+            CreateMap<Department, DepartmentDto>()
+                .ReverseMap();
+
             CreateMap<AttendanceDetail, AttendanceDetailDto>()
                 .ReverseMap();
         }

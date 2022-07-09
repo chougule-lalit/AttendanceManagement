@@ -25,7 +25,7 @@ namespace AttendanceManagement.Data
         {
             modelBuilder.Entity<RoleMaster>().HasData(
                    new RoleMaster { Id = Convert.ToInt32(RoleEnum.Admin), Name = RoleEnum.Admin.ToString() },
-                   new RoleMaster { Id = Convert.ToInt32(RoleEnum.Manageer), Name = RoleEnum.Manageer.ToString() },
+                   new RoleMaster { Id = Convert.ToInt32(RoleEnum.Manager), Name = RoleEnum.Manager.ToString() },
                    new RoleMaster { Id = Convert.ToInt32(RoleEnum.Associate), Name = RoleEnum.Associate.ToString() }
                    );
 

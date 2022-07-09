@@ -60,7 +60,35 @@ namespace AttendanceManagement.Application
             if (user != null)
             {
                 _dbContext.RoleMasters.Remove(user);
+                await _dbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<PagedResultDto<RoleMasterDto>> FetchRolesListAsync(GetRoleInputDto input)
+        {
+            var roles = await _dbContext.RoleMasters.ToListAsync();
+
+            if (!string.IsNullOrEmpty(input.Search))
+                roles = roles.Where(x => input.Search.ToLower().Contains(x.Name.ToLower())).ToList();
+
+            var count = roles.Count;
+
+            var returnData = roles.Skip(input.SkipCount).Take(input.MaxResultCount).ToList();
+
+            return new PagedResultDto<RoleMasterDto>
+            {
+                Items = _mapper.Map<List<RoleMasterDto>>(returnData),
+                TotalCount = count
+            };
+        }
+
+        public async Task<List<RoleDropdownDto>> GetRoleDropdownAsync()
+        {
+            return await _dbContext.RoleMasters.Select(x => new RoleDropdownDto
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToListAsync();
         }
     }
 }

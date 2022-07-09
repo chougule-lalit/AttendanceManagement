@@ -5,21 +5,16 @@ using System.Threading.Tasks;
 
 namespace AttendanceManagement.Contract.Dto
 {
-    public class RoleMasterDto
+    public class DesignationDto
     {
         public int? Id { get; set; }
 
         public string Name { get; set; }
     }
 
-    public class GetRoleInputDto : PagedResultInput
+    public class DepartmentDto
     {
-
-    }
-
-    public class RoleDropdownDto
-    {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Name { get; set; }
     }

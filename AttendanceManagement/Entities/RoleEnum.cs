@@ -8,7 +8,7 @@ namespace AttendanceManagement.Entities
     public enum RoleEnum
     {
         Admin = 1,
-        Manageer = 2,
+        Manager = 2,
         Associate = 3
     }
 }

@@ -11,6 +11,8 @@ namespace AttendanceManagement.Contract
         Task CreateOrUpdateAsync(RoleMasterDto input);
         Task<RoleMasterDto> GetRoleAsync(int id);
         Task DeleteRoleAsync(int id);
+        Task<PagedResultDto<RoleMasterDto>> FetchRolesListAsync(GetRoleInputDto input);
+        Task<List<RoleDropdownDto>> GetRoleDropdownAsync();
 
     }
 }
