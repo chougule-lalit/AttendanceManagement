@@ -78,7 +78,7 @@ namespace AttendanceManagement.Application
             }
             else
             {
-                var userToCreate = _mapper.Map<Designation>(input);
+                var userToCreate = _mapper.Map<Department>(input);
                 await _dbContext.AddAsync(userToCreate);
                 await _dbContext.SaveChangesAsync();
             }
