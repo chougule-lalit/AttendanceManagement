@@ -78,5 +78,19 @@ namespace AttendanceManagement.Controllers
         {
             return _designationAndDepartmentAppService.GetDesignationDropdownAsync();
         }
+
+        [HttpPost]
+        [Route("fetchDepartmentList")]
+        public virtual Task<PagedResultDto<DepartmentDto>> FetchDepartmentListAsync(GetDesignationInputDto input)
+        {
+            return _designationAndDepartmentAppService.FetchDepartmentListAsync(input);
+        }
+
+        [HttpPost]
+        [Route("fetchDesignationList")]
+        public virtual Task<PagedResultDto<DesignationDto>> FetchDesignationListAsync(GetDesignationInputDto input)
+        {
+            return _designationAndDepartmentAppService.FetchDesignationListAsync(input);
+        }
     }
 }

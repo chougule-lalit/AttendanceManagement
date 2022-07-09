@@ -116,5 +116,35 @@ namespace AttendanceManagement.Application
             var data = await _dbContext.Designations.ToListAsync();
             return _mapper.Map<List<DesignationDto>>(data);
         }
+
+        public async Task<PagedResultDto<DesignationDto>> FetchDesignationListAsync(GetDesignationInputDto input)
+        {
+            var data = await _dbContext.Designations.ToListAsync();
+
+            var count = data.Count;
+
+            var returnData = data.Skip(input.SkipCount).Take(input.MaxResultCount).ToList();
+
+            return new PagedResultDto<DesignationDto>
+            {
+                Items = _mapper.Map<List<DesignationDto>>(returnData),
+                TotalCount = count
+            };
+        }
+
+        public async Task<PagedResultDto<DepartmentDto>> FetchDepartmentListAsync(GetDesignationInputDto input)
+        {
+            var data = await _dbContext.Departments.ToListAsync();
+
+            var count = data.Count;
+
+            var returnData = data.Skip(input.SkipCount).Take(input.MaxResultCount).ToList();
+
+            return new PagedResultDto<DepartmentDto>
+            {
+                Items = _mapper.Map<List<DepartmentDto>>(returnData),
+                TotalCount = count
+            };
+        }
     }
 }

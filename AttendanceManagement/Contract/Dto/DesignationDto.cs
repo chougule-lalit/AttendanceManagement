@@ -18,4 +18,14 @@ namespace AttendanceManagement.Contract.Dto
 
         public string Name { get; set; }
     }
+
+    public class GetDesignationInputDto : PagedResultInput
+    {
+
+    }
+
+    public class GetDepartmentInputDto : PagedResultInput
+    {
+
+    }
 }
