@@ -1,4 +1,5 @@
-﻿using AttendanceManagement.Contract.Dto;
+﻿using AttendanceManagement.Contract;
+using AttendanceManagement.Contract.Dto;
 using AttendanceManagement.Data;
 using AttendanceManagement.Entities;
 using AutoMapper;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AttendanceManagement.Application
 {
-    public class DesignationAndDepartmentAppService
+    public class DesignationAndDepartmentAppService: IDesignationAndDepartmentAppService
     {
         private readonly AttendanceManagementDbContext _dbContext;
         private readonly IMapper _mapper;

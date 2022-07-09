@@ -37,6 +37,7 @@ namespace AttendanceManagement
             services.AddTransient<IRoleMasterAppService, RoleMasterAppService>();
             services.AddTransient<IEnquiryAppService, EnquiryAppService>();
             services.AddTransient<IAttendanceAppService, AttendanceAppService>();
+            services.AddTransient<IDesignationAndDepartmentAppService, DesignationAndDepartmentAppService>();
 
             services.AddCors(options =>
             {
