@@ -1,0 +1,94 @@
+<h1 mat-dialog-title>{{mode}} User</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" class="form-control  form-control-sm" name="firstName" formControlName="firstName" [class.is-invalid]="isSubmitted && f.firstName.errors">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.firstName.errors && f.firstName.errors.required">
+            First Name is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" class="form-control  form-control-sm" name="lastName" formControlName="lastName" [class.is-invalid]="isSubmitted && f.lastName.errors">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.lastName.errors && f.lastName.errors.required">
+            Last Name is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Email<span class="req">*</span></label>
+          <input type="email" class="form-control  form-control-sm" name="email" formControlName="email" [class.is-invalid]="isSubmitted && f.email.errors">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.email.errors && f.email.errors.pattern">
+            Please enter a valid email address
+          </div>
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.email.errors && f.email.errors.required">
+            Email is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Phone<span class="req">*</span></label>
+          <input type="text" class="form-control  form-control-sm" name="phone" formControlName="phone" [class.is-invalid]="isSubmitted && f.phone.errors">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.phone.errors && f.phone.errors.pattern">
+            Please enter a valid phone number
+          </div>
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.phone.errors && f.phone.errors.required">
+            Phone is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Select Role<span class="req">*</span></label>
+      <select formControlName="roleId" [class.is-invalid]="isSubmitted && f.roleId.errors" name="roleId" class="form-select form-select-sm">
+        <option *ngFor="let item of roles" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.roleId.errors && f.roleId.errors.required">
+        Role is <strong>required</strong>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Select Designation<span class="req">*</span></label>
+      <select formControlName="designationId" [class.is-invalid]="isSubmitted && f.designationId.errors" name="designationId" class="form-select form-select-sm">
+        <option *ngFor="let item of designationHolder" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.designationId.errors && f.designationId.errors.required">
+        Designation is <strong>required</strong>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Select Department<span class="req">*</span></label>
+      <select formControlName="departmentId" [class.is-invalid]="isSubmitted && f.departmentId.errors" name="departmentId" class="form-select form-select-sm">
+        <option *ngFor="let item of departmentHolder" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.departmentId.errors && f.departmentId.errors.required">
+        Department is <strong>required</strong>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Password<span class="req">*</span></label>
+      <input type="password" class="form-control  form-control-sm" name="password" formControlName="password" [class.is-invalid]="isSubmitted && f.password.errors">
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.password.errors && f.password.errors.required">
+        Password is <strong>required</strong>
+      </div>
+    </div>
+    <mat-card-actions align="end">
+      <button mat-button mat-raised-button mat-dialog-close>Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>
+
+

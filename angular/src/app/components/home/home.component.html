@@ -1,0 +1,120 @@
+<section class="home-section">
+  <div class="container-fluid">
+    <!--<div class="row">
+      <div class="col-sm-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-header">
+            <h4 class="card-title">Your Leave</h4>
+          </div>
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="leave-taken pe-3">
+                6 <br> Leave Taken
+              </div>
+              <div class="remaining-leave border-start ps-3">
+                23 <br> Remaining
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-header">
+            <h4 class="card-title">Your Sick Leave</h4>
+          </div>
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="leave-taken pe-3">
+                6 <br> Leave Taken
+              </div>
+              <div class="remaining-leave border-start ps-3">
+                23 <br> Remaining
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-header">
+            <h4 class="card-title">Total Inquiries</h4>
+          </div>
+          <div class="card-body">
+            <h6 class="text-black-50">Fri 15 May 2022 - Good Friday</h6>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <div class="row align-items-md-stretch">
+      <div class="col-sm-6">
+        <div class="card border-0">
+          <div class="card-body">
+            <h4 class="font-weight-bold m-0">Inquire Now</h4>
+            <hr class="mt-2 mb-4">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <div class="mb-3">
+                    <label>First Name<span class="req">*</span></label>
+                    <input type="text" class="form-control  form-control-sm" formControlName="firstName" [class.is-invalid]="isSubmitted && f.firstName.errors" name="firstName">
+                    <div class="invalid-feedback" *ngIf="isSubmitted && f.firstName.errors && f.firstName.errors.required">
+                      First Name is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="mb-3">
+                    <label>Last Name<span class="req">*</span></label>
+                    <input type="text" class="form-control  form-control-sm" formControlName="lastName" [class.is-invalid]="isSubmitted && f.lastName.errors" name="lastName">
+                    <div class="invalid-feedback" *ngIf="isSubmitted && f.lastName.errors && f.lastName.errors.required">
+                      Last Name is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 mb-2">
+                  <div class="mb-3">
+                    <label>Email<span class="req">*</span></label>
+                    <input type="email" class="form-control  form-control-sm" formControlName="email" [class.is-invalid]="isSubmitted && f.email.errors" name="email">
+                    <div class="invalid-feedback" *ngIf="isSubmitted && f.email.errors && f.email.errors.pattern">
+                      Please enter a valid email address
+                    </div>
+                    <div class="invalid-feedback" *ngIf="isSubmitted && f.email.errors && f.email.errors.required">
+                      Email is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 mb-2">
+                  <div class="mb-3">
+                    <label>Phone<span class="req">*</span></label>
+                    <input type="text" class="form-control  form-control-sm" formControlName="phone" [class.is-invalid]="isSubmitted && f.phone.errors" name="phone">
+                    <div class="invalid-feedback" *ngIf="isSubmitted && f.phone.errors && f.phone.errors.pattern">
+                      Please enter a valid phone number
+                    </div>
+                    <div class="invalid-feedback" *ngIf="isSubmitted && f.phone.errors && f.phone.errors.required">
+                      Phone is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label>Remark</label>
+                <textarea class="form-control  form-control-sm" formControlName="remark" name="remark"></textarea>
+              </div>
+              <div class="d-flex align-items-center justify-content-end">
+                <button mat-button mat-raised-button mat-dialog-close>Close</button>
+                <button type="submit" mat-button mat-raised-button color="primary" class="ms-2">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <img src="assets/img/build-your-program-appointment-booking/3884687.jpg" class="img-fluid" alt="...">
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light navbar-first mat-elevation-z3 py-0">
+  <div class="container-fluid">
+    <a class="logo-box" routerLink="/main/home">
+      <mat-icon> calendar_today </mat-icon>
+      <span class="ms-2">Attendance Management</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" href="javascript:void(0)" (click)="logOut()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="wrapper">
+  <aside class="sidebar">
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/home" routerLinkActive="active">
+          <span><mat-icon> home </mat-icon> Home</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/users" routerLinkActive="active">
+          <span><mat-icon> supervisor_account </mat-icon> Users</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/roles" routerLinkActive="active">
+          <span><mat-icon> how_to_reg </mat-icon> User Roles</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/attendance" routerLinkActive="active">
+          <span><mat-icon> library_books </mat-icon> Attendance</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/attendance-reports" routerLinkActive="active">
+          <span><mat-icon> library_books </mat-icon> Attendance Reports</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/enquiry" routerLinkActive="active">
+          <span><mat-icon> list_alt </mat-icon> Enquiries</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/designation" routerLinkActive="active">
+          <span><mat-icon> school </mat-icon> Designation</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/department" routerLinkActive="active">
+          <span><mat-icon> account_balance </mat-icon> Department</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{mode}} Department</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Name<span class="req">*</span></label>
+      <input type="text" class="form-control  form-control-sm" formControlName="name" [class.is-invalid]="isSubmitted && f.name.errors" name="name">
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.name.errors && f.name.errors.required">
+        Name is required
+      </div>
+    </div>
+    <hr class="my-0">
+    <mat-card-actions align="end">
+      <button mat-button mat-raised-button mat-dialog-close >Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>

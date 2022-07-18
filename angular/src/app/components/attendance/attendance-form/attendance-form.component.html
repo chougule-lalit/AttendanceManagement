@@ -1,0 +1,97 @@
+<h1 mat-dialog-title>{{mode}} Inquiry</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Select User<span class="req">*</span></label>
+      <select formControlName="userId" [class.is-invalid]="isSubmitted && f.userId.errors" name="userId" class="form-select form-select-sm">
+        <option *ngFor="let item of usersHolder" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.userId.errors && f.userId.errors.required">
+        User is <strong>required</strong>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Leave From Date<span class="req">*</span></label>
+          <input type="date" class="form-control  form-control-sm" name="leaveFromDate" [class.is-invalid]="isSubmitted && f.leaveFromDate.errors" formControlName="leaveFromDate">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.leaveFromDate.errors && f.leaveFromDate.errors.required">
+            Leave From Date is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Attendance Date<span class="req">*</span></label>
+          <input type="date" class="form-control  form-control-sm" name="attendanceDate" [class.is-invalid]="isSubmitted && f.attendanceDate.errors" formControlName="attendanceDate">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.attendanceDate.errors && f.attendanceDate.errors.required">
+            attendanceDate is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 mb-2">
+        <div class="mb-3">
+          <label>Leave Date<span class="req">*</span></label>
+          <input type="date" class="form-control  form-control-sm" name="leaveToDate" [class.is-invalid]="isSubmitted && f.leaveToDate.errors" formControlName="leaveToDate">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.leaveToDate.errors && f.leaveToDate.errors.required">
+            Leave Date is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <div class="mb-3">
+          <label>Attend Date<span class="req">*</span></label>
+          <input type="date" class="form-control  form-control-sm" name="attendDate" [class.is-invalid]="isSubmitted && f.attendDate.errors" formControlName="attendDate">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.attendDate.errors && f.attendDate.errors.required">
+            Attend Date is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Time In<span class="req">*</span></label>
+          <input type="datetime-local" class="form-control  form-control-sm" name="timeIn" [class.is-invalid]="isSubmitted && f.timeIn.errors" formControlName="timeIn">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.timeIn.errors && f.timeIn.errors.required">
+            Time In is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <label>Time Out<span class="req">*</span></label>
+          <input type="datetime-local" class="form-control  form-control-sm" name="timeOut" [class.is-invalid]="isSubmitted && f.timeOut.errors" formControlName="timeOut">
+          <div class="invalid-feedback" *ngIf="isSubmitted && f.timeOut.errors && f.timeOut.errors.required">
+            Time Out is <strong>required</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Select Attendance Type</label>
+      <select formControlName="attendanceTypeId" name="attendanceTypeId" class="form-select-sm form-select">
+        <option *ngFor="let item of attendanceTypeHolder" [value]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+
+
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea class="form-control  form-control-sm" name="description" formControlName="description"></textarea>
+    </div>
+
+    <hr class="my-0">
+    <mat-card-actions align="end">
+      <button mat-button mat-raised-button mat-dialog-close>Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>

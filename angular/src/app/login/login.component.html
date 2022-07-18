@@ -1,0 +1,155 @@
+<div class="row g-0 align-items-center" style="background-color: #6f007c0a">
+  <div class="col-sm-6">
+    <ng-container *ngIf="loginOrRegister">
+      <div class="card border-0 shadow login-content">
+        <div class="card-body">
+          <h2 class="font-weight-bold text-center">Login</h2>
+          <h5 class="text-center">Attendance Management System</h5>
+          <hr>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="loginError.status">
+            {{loginError.message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+
+            <div class="mb-3">
+              <label>Email</label>
+              <input type="text" formControlName="email" [class.is-invalid]="isLoginFormSubmitted && loginFormControls.email.errors" class="form-control form-control-sm">
+              <div class="invalid-feedback" *ngIf="isLoginFormSubmitted && loginFormControls.email.errors && loginFormControls.email.errors.required">
+                Email is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label>Password</label>
+              <input type="password" formControlName="password" [class.is-invalid]="isLoginFormSubmitted && loginFormControls.password.errors" class="form-control form-control-sm">
+              <div class="invalid-feedback" *ngIf="isLoginFormSubmitted && loginFormControls.password.errors && loginFormControls.password.errors.required">
+                Password is required
+              </div>
+            </div>
+
+            <hr class="mt-0">
+            <div class="d-flex align-items-center justify-content-center">
+              <button type="submit" class="btn btn-success w-100">Login</button>
+              <button type="button" (click)="toggleForm()" class="btn btn-primary w-100 ms-2">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!loginOrRegister">
+      <div class="card border-0 shadow login-content">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="font-weight-bold text-center mb-0">Register</h2>
+            <h5 class="text-center">Attendance Management System</h5>
+            <hr>
+            <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="mb-3">
+                    <label>First name</label>
+                    <input class="form-control form-control-sm" formControlName="firstName" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.firstName.errors">
+                    <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.firstName.errors && registerFormControls.firstName.errors.required">
+                      First name is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="mb-3">
+                    <label>Last name</label>
+                    <input class="form-control form-control-sm" formControlName="lastName" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.lastName.errors">
+                    <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.lastName.errors && registerFormControls.lastName.errors.required">
+                      Last name is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label>Email</label>
+                <input class="form-control form-control-sm" type="email" formControlName="email" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.email.errors">
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.email.errors && registerFormControls.email.errors.required">
+                  Email is required
+                </div>
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.email.errors && registerFormControls.email.errors.pattern">
+                  Please enter a valid email address
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label>Phone</label>
+                <input class="form-control form-control-sm" formControlName="phone" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.phone.errors">
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.phone.errors && registerFormControls.phone.errors.required">
+                  Phone is required
+                </div>
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.phone.errors && registerFormControls.phone.errors.pattern">
+                  Enter 10 Digit Phone Number
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label>Select Role<span class="req">*</span></label>
+                <select formControlName="roleId" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.roleId.errors" name="roleId" class="form-select form-select-sm">
+                  <option *ngFor="let item of roles" [value]="item.id">{{item.name}}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.roleId.errors && registerFormControls.roleId.errors.required">
+                  Role is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Select Designation<span class="req">*</span></label>
+                <select formControlName="designationId" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.designationId.errors" name="designationId" class="form-select form-select-sm">
+                  <option *ngFor="let item of designationHolder" [value]="item.id">{{item.name}}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.designationId.errors && registerFormControls.designationId.errors.required">
+                  Designation is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Select Department<span class="req">*</span></label>
+                <select formControlName="departmentId" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.departmentId.errors" name="departmentId" class="form-select form-select-sm">
+                  <option *ngFor="let item of departmentHolder" [value]="item.id">{{item.name}}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.departmentId.errors && registerFormControls.departmentId.errors.required">
+                  Department is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Password</label>
+                <input class="form-control form-control-sm" type="password" formControlName="password" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.password.errors">
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted && registerFormControls.password.errors && registerFormControls.password.errors.required">
+                  Password is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Confirm Password</label>
+                <input class="form-control form-control-sm" type="password" formControlName="conf_password" [class.is-invalid]="isRegisterFormSubmitted && registerFormControls.conf_password.errors">
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted  && registerFormControls.conf_password.errors && registerFormControls.password.errors.required">
+                  Confirm Password is required
+                </div>
+                <div class="invalid-feedback" *ngIf="isRegisterFormSubmitted  && registerFormControls.conf_password.errors && registerFormControls.password.errors.mustMatch">
+                  Confirm Password & Password do not match
+                </div>
+              </div>
+
+              <hr class="mt-0">
+              <div class="d-flex align-items-center justify-content-center">
+                <button type="submit" class="btn btn-success w-100">Register</button>
+                <button type="button" (click)="toggleForm()" class="btn btn-primary w-100 ms-2">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+  <div class="col-sm-6">
+    <div class="poster" style="background-image: url('assets/img/bg/login-bg.webp')"></div>
+  </div>
+</div>
+
+
