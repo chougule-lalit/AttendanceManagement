@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonService } from 'src/app/shared/services/common.service';
-import { CreateAndUpdateModalComponent } from '../../inquiry/create-and-update-modal/create-and-update-modal.component';
 
 @Component({
   selector: 'app-attendance-form',
@@ -10,12 +9,11 @@ import { CreateAndUpdateModalComponent } from '../../inquiry/create-and-update-m
 })
 export class AttendanceFormComponent implements OnInit {
   form!: FormGroup;
-  mode = 'Create';
+  mode = 'Add';
   isSubmitted = false;
   usersHolder: any[] = [];
-  attendanceTypeHolder: any[] = [];
   constructor(
-    public dialogRef: MatDialogRef<CreateAndUpdateModalComponent>,
+    public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private commonService: CommonService
@@ -34,7 +32,6 @@ export class AttendanceFormComponent implements OnInit {
       timeOut: ['', [Validators.required]],
       attendanceTypeId: ['', [Validators.required]],
       description: [''],
-      attendDate: ['', [Validators.required]],
     });
 
     if (this.data) {
@@ -52,7 +49,6 @@ export class AttendanceFormComponent implements OnInit {
           timeOut: result.timeOut,
           attendanceTypeId: result.attendanceTypeId,
           description: result.description,
-          attendDate: result.attendDate,
         });
       });
 
@@ -76,13 +72,13 @@ export class AttendanceFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log('Form Data : ', JSON.stringify(this.form.value));
+    console.log('Form Data : ', this.form.valid);
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
     this.commonService.postRequest('Attendance/createOrUpdate', this.form.value).subscribe((resp) => {
-      // console.log('Save Resp', resp);
+      console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
 

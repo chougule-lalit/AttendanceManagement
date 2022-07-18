@@ -10,7 +10,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class DepartmentFormComponent implements OnInit {
 
   form!: FormGroup;
-  mode = 'Create';
+  mode = 'Add';
   isSubmitted = false;
 
   constructor(

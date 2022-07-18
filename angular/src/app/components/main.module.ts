@@ -22,6 +22,8 @@ import { DepartmentComponent } from './department/department.component';
 import { DesignationFormComponent } from './designation/designation-form/designation-form.component';
 import { DepartmentFormComponent } from './department/department-form/department-form.component';
 import { AttendanceReportsComponent } from './attendance/attendance-reports/attendance-reports.component';
+import { AttendanceTypesComponent } from './attendance/attendance-types/attendance-types.component';
+import { AttendanceTypeFormComponent } from './attendance/attendance-types/attendance-type-form/attendance-type-form.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AttendanceReportsComponent } from './attendance/attendance-reports/atte
     DepartmentComponent,
     DesignationFormComponent,
     DepartmentFormComponent,
-    AttendanceReportsComponent
+    AttendanceReportsComponent,
+    AttendanceTypesComponent,
+    AttendanceTypeFormComponent
   ],
   imports: [
     CommonModule,

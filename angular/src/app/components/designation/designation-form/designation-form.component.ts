@@ -11,7 +11,7 @@ import {CreateAndUpdateModalComponent} from "../../inquiry/create-and-update-mod
 export class DesignationFormComponent implements OnInit {
 
   form!: FormGroup;
-  mode = 'Create';
+  mode = 'Add';
   isSubmitted = false;
 
   constructor(

@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{mode}} Inquiry</h1>
+<h1 mat-dialog-title>{{mode}} Attendance</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="mb-3">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6 mb-2">
+      <div class="col-sm-12 mb-2">
         <div class="mb-3">
           <label>Leave Date<span class="req">*</span></label>
           <input type="date" class="form-control  form-control-sm" name="leaveToDate" [class.is-invalid]="isSubmitted && f.leaveToDate.errors" formControlName="leaveToDate">
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 mb-2">
+      <!--<div class="col-sm-6 mb-2">
         <div class="mb-3">
           <label>Attend Date<span class="req">*</span></label>
           <input type="date" class="form-control  form-control-sm" name="attendDate" [class.is-invalid]="isSubmitted && f.attendDate.errors" formControlName="attendDate">
@@ -51,7 +51,7 @@
             Attend Date is <strong>required</strong>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
 
     <div class="row">
@@ -76,10 +76,18 @@
     </div>
 
     <div class="mb-3">
-      <label>Select Attendance Type</label>
-      <select formControlName="attendanceTypeId" name="attendanceTypeId" class="form-select-sm form-select">
-        <option *ngFor="let item of attendanceTypeHolder" [value]="item.id">{{item.name}}</option>
+      <label>Attendance Type</label>
+      <select formControlName="attendanceTypeId" name="attendanceTypeId" [class.is-invalid]="isSubmitted && f.attendanceTypeId.errors" class="form-select-sm form-select">
+        <option value="">Select Attendance Type</option>
+        <option value="1">Present</option>
+        <option value="2">Personal Leave</option>
+        <option value="3">Sick Leave</option>
+        <option value="4">Casual Leave</option>
+        <option value="5">Comp Off</option>
       </select>
+      <div class="invalid-feedback" *ngIf="isSubmitted && f.attendanceTypeId.errors && f.attendanceTypeId.errors.required">
+        Attendance Type is <strong>required</strong>
+      </div>
     </div>
 
 

@@ -10,14 +10,14 @@ import {CommonService} from 'src/app/shared/services/common.service';
 export class CreateAndUpdateUserComponent implements OnInit {
 
   form!: FormGroup;
-  mode = 'Create';
+  mode = 'Add';
   isSubmitted = false;
   roles: any[] = [];
   designationHolder: any[] = [];
   departmentHolder: any[] = [];
 
   constructor(
-    public dialogRef: MatDialogRef<CreateAndUpdateUserComponent>,
+    public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private commonService: CommonService

@@ -9,7 +9,7 @@ import {CommonService} from 'src/app/shared/services/common.service';
 export class HomeComponent implements OnInit {
 
   form!: FormGroup;
-  mode = 'Create';
+  mode = 'Add';
   isSubmitted = false;
 
   constructor(

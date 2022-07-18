@@ -1,1 +1,58 @@
-<p>attendance-reports works!</p>
+<div class="container-fluid">
+  <mat-card>
+    <mat-card-title>
+      <div class="d-flex align-items-center justify-content-between">
+        <span class="text-nowrap">Attendance Report</span>
+        <div class="d-flex align-items-center justify-content-between">
+          <select (change)="onSelectedPastMonth($event)" class="form-select form-select-sm rounded-pill me-3" style="min-width: 20rem">
+            <option value="">Select Past Month</option>
+            <option *ngFor="let pastData of pastMonthHolder" [value]="pastData.lable">{{pastData.lable}}</option>
+          </select>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="attendanceDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Attendance Date</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.attendanceDate | date }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="leaveFromDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Leave From Date</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.leaveFromDate | date }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="leaveToDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Leave To Date</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.leaveToDate | date }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="timeIn">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Time In</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.timeIn | date: 'h:mm a' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="timeOut">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Time Out</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.timeOut | date: 'h:mm a' }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="attendDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Attend Date</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.attendDate }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <div class="no-results" [style.display]="dataSource?.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <mat-paginator #paginator [length]="dataSource?.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </mat-card>
+</div>

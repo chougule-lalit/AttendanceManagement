@@ -9,10 +9,10 @@ import { CommonService } from 'src/app/shared/services/common.service';
 })
 export class CreateAndUpdateModalComponent implements OnInit {
   form!: FormGroup;
-  mode = 'Create';
+  mode = 'Add';
   isSubmitted = false;
   constructor(
-    public dialogRef: MatDialogRef<CreateAndUpdateModalComponent>,
+    public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private commonService: CommonService

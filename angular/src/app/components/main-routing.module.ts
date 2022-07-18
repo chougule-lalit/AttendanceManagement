@@ -11,6 +11,8 @@ import { RoleComponent } from './role/role.component';
 import { UsersComponent } from './users-and-roles/users.component';
 import {DesignationComponent} from "./designation/designation.component";
 import {DepartmentComponent} from "./department/department.component";
+import {AttendanceReportsComponent} from "./attendance/attendance-reports/attendance-reports.component";
+import {AttendanceTypesComponent} from "./attendance/attendance-types/attendance-types.component";
 
 const routes: Routes = [
   {
@@ -21,6 +23,8 @@ const routes: Routes = [
       { path: 'users', component: UsersComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: 1 } },
       { path: 'enquiry', component: InquiryComponent, canActivate: [AuthGuard], data: { expectedRoles: 1 } },
       { path: 'attendance', component: AttendanceComponent, canActivate: [AuthGuard], data: { expectedRoles: 1 } },
+      { path: 'attendance-reports', component: AttendanceReportsComponent, canActivate: [AuthGuard], data: { expectedRoles: 1 } },
+      // { path: 'attendance-types', component: AttendanceTypesComponent, canActivate: [AuthGuard], data: { expectedRoles: 1 } },
       { path: 'roles', component: RoleComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: 1 } },
       { path: 'designation', component: DesignationComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: 1 } },
       { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRoles: 1 } },

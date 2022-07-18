@@ -40,10 +40,15 @@
         </a>
       </li>
       <li class="sidebar-item">
-        <a class="sidebar-link" routerLink="/main/attendance" routerLinkActive="active">
+        <a class="sidebar-link" routerLink="/main/attendance" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <span><mat-icon> library_books </mat-icon> Attendance</span>
         </a>
       </li>
+      <!--<li class="sidebar-item">
+        <a class="sidebar-link" routerLink="/main/attendance-types" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <span><mat-icon> library_books </mat-icon> Attendance Types</span>
+        </a>
+      </li>-->
       <li class="sidebar-item">
         <a class="sidebar-link" routerLink="/main/attendance-reports" routerLinkActive="active">
           <span><mat-icon> library_books </mat-icon> Attendance Reports</span>
