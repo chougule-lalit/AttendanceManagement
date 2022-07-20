@@ -19,5 +19,7 @@ namespace AttendanceManagement.Contract
         Task<LoginOutputDto> LoginAsync(LoginInputDto input);
 
         Task<List<UserDropdownDto>> GetUserListPerRoleDropDownAsync(int roleId);
+
+        Task<List<UserDropdownDto>> GetAllUserListDropDownAsync();
     }
 }

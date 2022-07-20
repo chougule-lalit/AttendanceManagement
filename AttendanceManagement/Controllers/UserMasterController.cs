@@ -59,5 +59,12 @@ namespace AttendanceManagement.Controllers
         {
             return _userMasterAppService.GetUserListPerRoleDropDownAsync(roleId);
         }
+
+        [HttpGet]
+        [Route("getAllUserListDropDown")]
+        public virtual Task<List<UserDropdownDto>> GetAllUserListDropDownAsync()
+        {
+            return _userMasterAppService.GetAllUserListDropDownAsync();
+        }
     }
 }

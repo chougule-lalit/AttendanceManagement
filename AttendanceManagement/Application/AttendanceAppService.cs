@@ -121,13 +121,13 @@ namespace AttendanceManagement.Application
                     foreach (var leaveItem in list)
                     {
                         var totalDays = (int)(leaveItem.LeaveToDate - leaveItem.LeaveFromDate).Value.TotalDays;
-                        if (totalDays == 1)
-                        {
-                            output.Add(leaveItem);
-                        }
-                        else if (totalDays > 1)
+                        if (totalDays > 1)
                         {
                             output.AddRange(GetAllDaysList(leaveItem));
+                        }
+                        else
+                        {
+                            output.Add(leaveItem);
                         }
                     }
                 }

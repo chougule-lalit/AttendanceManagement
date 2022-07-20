@@ -129,5 +129,16 @@ namespace AttendanceManagement.Application
                 })
                 .ToListAsync();
         }
+
+        public async Task<List<UserDropdownDto>> GetAllUserListDropDownAsync()
+        {
+            return await _dbContext.UserMasters
+                .Select(x => new UserDropdownDto
+                {
+                    Id = x.Id,
+                    Name = $"{x.FirstName} {x.LastName}"
+                })
+                .ToListAsync();
+        }
     }
 }
