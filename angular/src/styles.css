@@ -32,7 +32,7 @@ body {
 .poster {
   background-size: cover;
   height: 100vh;
-  background-position: bottom;
+  background-position: center;
 }
 
 form {
