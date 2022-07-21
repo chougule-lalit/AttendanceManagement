@@ -38,10 +38,8 @@ export class AttendanceTypeFormComponent implements OnInit {
     });
 
     if (this.data) {
-      console.log('Edit Data : ', this.data);
       this.mode = 'Update';
       this.commonService.getRequestWithId('', this.data.id).subscribe((result) => {
-        console.log('Get Data by id : ', new Date(result.attendanceDate));
         this.form.patchValue({
           id: result.id,
           userId: result.userId,
@@ -55,10 +53,6 @@ export class AttendanceTypeFormComponent implements OnInit {
           attendDate: result.attendDate,
         });
       });
-
-
-      // console.log('patchValue : ', this.form.value);
-
     }
   }
 
@@ -68,7 +62,6 @@ export class AttendanceTypeFormComponent implements OnInit {
 
   getUsersByRoleId(roleId: number) {
     this.commonService.getRequestWithId('', roleId).subscribe((result) => {
-      console.log('Users By role : ', result);
       if(result){
         this.usersHolder = result;
       }
@@ -76,13 +69,11 @@ export class AttendanceTypeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log('Form Data : ', JSON.stringify(this.form.value));
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
     this.commonService.postRequest('', this.form.value).subscribe((resp) => {
-      // console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
 

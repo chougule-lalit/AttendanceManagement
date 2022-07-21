@@ -31,25 +31,22 @@ export class AttendanceFormComponent implements OnInit, AfterContentChecked {
     let dd = today.getDate();
 
     this.currentDate = yyyy + '-' + String(mm).padStart(2, '0') + '-' + String(dd).padStart(2, '0');
-    console.log('Current Date : ', this.currentDate);
-
     this.getUserList();
     this.form = this.fb.group({
       id: [null],
       userId: ['1', [Validators.required]],
       attendanceDate: [this.currentDate, [Validators.required]],
-      leaveFromDate: [''],
-      leaveToDate: [''],
-      timeIn: [''],
-      timeOut: [''],
+      leaveFromDate: [null],
+      leaveToDate: [null],
+      timeIn: [null],
+      timeOut: [null],
       attendanceTypeId: ['', [Validators.required]],
       description: [''],
     });
     if (this.data) {
-      console.log('Edit Data : ', this.data);
       this.mode = 'Update';
       this.commonService.getRequestWithId('Attendance/get', this.data.id).subscribe((result) => {
-        console.log('Get Data by id : ', new Date(result.attendanceDate));
+        this.isAttendanceTypePresent = result.attendanceTypeId === 1;
         this.form.patchValue({
           id: result.id,
           userId: result.userId,
@@ -61,23 +58,29 @@ export class AttendanceFormComponent implements OnInit, AfterContentChecked {
           attendanceTypeId: result.attendanceTypeId,
           description: result.description,
         });
+
+        if (result.attendanceTypeId === 1) {
+          this.form.patchValue({
+            leaveFromDate: null,
+            leaveToDate: null,
+          });
+        } else {
+          this.form.patchValue({
+            timeIn: null,
+            timeOut: null,
+          });
+        }
       });
-
-
-      // console.log('patchValue : ', this.form.value);
-
     }
 
     // this.form.get('attendanceTypeId').valueChanges.subscribe(value => {
     //
     //   if (+value === 1) {
-    //     console.log('VAlue : ', +value);
     //     this.form.get('timeIn').setValidators(Validators.required);
     //     this.form.get('timeOut').setValidators(Validators.required);
     //     this.form.get('leaveFromDate').clearValidators();
     //     this.form.get('leaveToDate').clearValidators();
     //   } else {
-    //     console.log('VAlue : ', +value);
     //     this.form.get('timeIn').clearValidators();
     //     this.form.get('timeOut').clearValidators();
     //     this.form.get('leaveFromDate').setValidators(Validators.required);
@@ -103,8 +106,6 @@ export class AttendanceFormComponent implements OnInit, AfterContentChecked {
   }
 
   onSubmit(): void {
-    console.log('Form Data : ', this.form.controls);
-    console.log('Form Data : ', this.form.valid);
     this.isSubmitted = true;
     if (+this.form.value.attendanceTypeId === 1 && !this.form.value.timeIn) {
       alert('Time In Field is Required');
@@ -120,17 +121,30 @@ export class AttendanceFormComponent implements OnInit, AfterContentChecked {
       alert('Leave to Date Field is Required');
       return;
     }
+
     if (this.form.invalid) {
       return;
     }
     this.commonService.postRequest('Attendance/createOrUpdate', this.form.value).subscribe((resp) => {
-      console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
   }
 
   onAttendanceTypeChanged(event: any) {
+
     let type = +event.target.value;
+    if (type === 1) {
+      this.form.patchValue({
+        leaveFromDate: null,
+        leaveToDate: null,
+      });
+    } else {
+      this.form.patchValue({
+        timeIn: null,
+        timeOut: null,
+      });
+    }
+
     this.isAttendanceTypePresent = type === 1;
     this.form.updateValueAndValidity();
   }

@@ -43,7 +43,6 @@ export class CreateAndUpdateUserComponent implements OnInit {
     this.getDesignation();
     this.getDepartment();
     if (this.data) {
-      // console.log('Edit Data : ', this.data);
       this.mode = 'Update';
 
       this.commonService.getRequestWithId('UserMaster/getUser', this.data.id).subscribe((result) => {
@@ -58,7 +57,6 @@ export class CreateAndUpdateUserComponent implements OnInit {
           roleId: result.roleId
         });
       });
-      // console.log('patchValue : ', this.form.value);
     }
   }
 
@@ -69,31 +67,26 @@ export class CreateAndUpdateUserComponent implements OnInit {
   getRoles(): void {
     this.commonService.getRequest('RoleMaster/getRoleDropdown').subscribe((result) => {
       this.roles = result;
-      // console.log('Roles : ', this.roles);
     });
   }
   getDesignation(): void {
     this.commonService.getRequest('DesignationAndDepartment/getDesignationDropdown').subscribe((result) => {
       this.designationHolder = result;
-      // console.log('designationHolder : ', this.designationHolder);
     });
   }
   getDepartment(): void {
     this.commonService.getRequest('DesignationAndDepartment/getDepartmentDropdown').subscribe((result) => {
       this.departmentHolder = result;
-      // console.log('departmentHolder : ', this.departmentHolder);
     });
   }
 
   onSubmit(): void {
-    // console.log('Form Data : ', this.form.value);
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
 
     this.commonService.createOrUpdateUser(this.form.value).subscribe((resp) => {
-      // console.log('User Save Resp', resp);
       this.dialogRef.close(true);
     });
   }

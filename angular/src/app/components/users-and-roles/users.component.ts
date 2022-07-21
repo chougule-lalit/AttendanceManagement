@@ -29,7 +29,6 @@ export class UsersComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.fetchUserList(input).subscribe((result) => {
-      // console.log('fetchUserList : ', result);
       this.dataSource = result.items;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -39,7 +38,6 @@ export class UsersComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(CreateAndUpdateUserComponent);
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after insert : ', result);
       if(result){
         this.getUserList();
       }
@@ -47,12 +45,10 @@ export class UsersComponent implements OnInit {
   }
 
   edit(editData: any): void {
-    // console.log('Edit Data : ', editData);
     const dialogRef = this.dialog.open(CreateAndUpdateUserComponent, {
       data: editData,
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after update : ', result);
       if(result){
         this.getUserList();
       }
@@ -61,7 +57,6 @@ export class UsersComponent implements OnInit {
 
   deleteUser(id: any): void {
     this.commonService.deleteRequestWithParams('UserMaster/delete', id).subscribe((data) => {
-      // console.log('User Delete Resp : ', data);
       this.getUserList();
     });
   }

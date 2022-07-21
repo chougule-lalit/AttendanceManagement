@@ -35,7 +35,6 @@ export class AttendanceReportsComponent implements OnInit {
       userId: JSON.parse(localStorage.getItem('user-details')).id
     };
     this.commonService.postRequest('Attendance/fetchAttendanceReport', payload).subscribe((result) => {
-      console.log('Get Data : ', result);
       if (result && result.length > 0) {
         this.dataSource = result;
         this.dataSource.paginator = this.paginator;
@@ -48,7 +47,6 @@ export class AttendanceReportsComponent implements OnInit {
 
   getPastMonth() {
     this.commonService.getRequest('Attendance/getPastMonthDropdown').subscribe((result) => {
-      console.log('Past Month : ', result);
       this.pastMonthHolder = result;
     })
   }
@@ -57,7 +55,6 @@ export class AttendanceReportsComponent implements OnInit {
     let val = event.target.value;
     this.pastMonthHolder.filter((item) => {
       if (item.lable == val) {
-        console.log('Filter Item : ', item);
         let pastMonth = {
           month: item.month,
           year: item.year,
@@ -71,7 +68,6 @@ export class AttendanceReportsComponent implements OnInit {
   // add(): void {
   //   const dialogRef = this.dialog.open(AttendanceFormComponent);
   //   dialogRef.afterClosed().subscribe(result => {
-  //     // console.log('The dialog was closed after insert : ', result);
   //     if (result) {
   //       this.getData();
   //     }
@@ -79,12 +75,10 @@ export class AttendanceReportsComponent implements OnInit {
   // }
   //
   // edit(editData: any): void {
-  //   // console.log('Edit Data : ', editData);
   //   const dialogRef = this.dialog.open(AttendanceFormComponent, {
   //     data: editData,
   //   });
   //   dialogRef.afterClosed().subscribe(result => {
-  //     // console.log('The dialog was closed after update : ', result);
   //     if (result) {
   //       this.getData();
   //     }
@@ -93,7 +87,6 @@ export class AttendanceReportsComponent implements OnInit {
   //
   // delete(id: any): void {
   //   this.commonService.deleteRequestWithId('Attendance/delete', id).subscribe((data) => {
-  //     // console.log('Delete Resp : ', data);
   //     this.getData();
   //   });
   // }

@@ -28,7 +28,6 @@ export class DepartmentFormComponent implements OnInit {
     });
 
     if (this.data) {
-      // console.log('Edit Data : ', this.data);
       this.mode = 'Update';
       this.commonService.getRequestWithId('DesignationAndDepartment/getDepartment', this.data.id).subscribe((result) => {
         if (result) {
@@ -38,7 +37,6 @@ export class DepartmentFormComponent implements OnInit {
           });
         }
       });
-      // console.log('patchValue : ', this.form.value);
     }
   }
 
@@ -47,13 +45,11 @@ export class DepartmentFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log('Form Data : ', this.form.value);
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
     this.commonService.postRequest('DesignationAndDepartment/createOrUpdateDerpartment', this.form.value).subscribe((resp) => {
-      // console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
 

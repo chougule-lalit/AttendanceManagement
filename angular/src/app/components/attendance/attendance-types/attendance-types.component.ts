@@ -31,7 +31,6 @@ export class AttendanceTypesComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.postRequest('', input).subscribe((result) => {
-      console.log('Get Data : ', result.items);
       if(result){
         this.dataSource = result.items;
         this.dataSource.paginator = this.paginator;
@@ -45,7 +44,6 @@ export class AttendanceTypesComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(AttendanceTypeFormComponent);
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after insert : ', result);
       if (result) {
         this.getData();
       }
@@ -53,12 +51,10 @@ export class AttendanceTypesComponent implements OnInit {
   }
 
   edit(editData: any): void {
-    // console.log('Edit Data : ', editData);
     const dialogRef = this.dialog.open(AttendanceTypeFormComponent, {
       data: editData,
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after update : ', result);
       if (result) {
         this.getData();
       }
@@ -67,7 +63,6 @@ export class AttendanceTypesComponent implements OnInit {
 
   delete(id: any): void {
     this.commonService.deleteRequestWithId('', id).subscribe((data) => {
-      // console.log('Delete Resp : ', data);
       this.getData();
     });
   }

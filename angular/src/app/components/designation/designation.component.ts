@@ -30,7 +30,6 @@ export class DesignationComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.postRequest('DesignationAndDepartment/fetchDesignationList', input).subscribe((result) => {
-      // console.log('Get Data : ', result);
       if(result){
         this.dataSource = result.items;
         this.dataSource.paginator = this.paginator;
@@ -42,7 +41,6 @@ export class DesignationComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(DesignationFormComponent);
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after insert : ', result);
       if(result){
         this.getData();
       }
@@ -50,12 +48,10 @@ export class DesignationComponent implements OnInit {
   }
 
   edit(editData: any): void {
-    // console.log('Edit Data : ', editData);
     const dialogRef = this.dialog.open(DesignationFormComponent, {
       data: editData,
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after update : ', result);
       if(result){
         this.getData();
       }
@@ -64,7 +60,6 @@ export class DesignationComponent implements OnInit {
 
   delete(id: any): void {
     this.commonService.deleteRequestWithId('DesignationAndDepartment/deleteDesignation', id).subscribe((data) => {
-      // console.log('Delete Resp : ', data);
       this.getData();
     });
   }

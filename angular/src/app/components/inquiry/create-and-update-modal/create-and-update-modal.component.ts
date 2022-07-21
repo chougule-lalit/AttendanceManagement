@@ -32,7 +32,6 @@ export class CreateAndUpdateModalComponent implements OnInit {
     });
 
     if (this.data) {
-      // console.log('Edit Data : ', this.data);
       this.mode = 'Update';
       this.form.patchValue({
         id: this.data.id,
@@ -42,9 +41,6 @@ export class CreateAndUpdateModalComponent implements OnInit {
         phone: this.data.phone,
         remark: this.data.remark,
       });
-
-      // console.log('patchValue : ', this.form.value);
-
     }
   }
 
@@ -53,13 +49,11 @@ export class CreateAndUpdateModalComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log('Form Data : ', this.form.value);
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
     this.commonService.postRequest('Enquiry/createOrUpdate', this.form.value).subscribe((resp) => {
-      // console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
 

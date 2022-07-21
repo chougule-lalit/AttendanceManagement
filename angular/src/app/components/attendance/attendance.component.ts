@@ -30,8 +30,7 @@ export class AttendanceComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.postRequest('Attendance/fetchAttendanceDetailList', input).subscribe((result) => {
-      console.log('Get Data : ', result.items);
-      if(result){
+      if (result) {
         this.dataSource = result.items;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -40,11 +39,9 @@ export class AttendanceComponent implements OnInit {
   }
 
 
-
   add(): void {
     const dialogRef = this.dialog.open(AttendanceFormComponent);
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after insert : ', result);
       if (result) {
         this.getData();
       }
@@ -52,12 +49,10 @@ export class AttendanceComponent implements OnInit {
   }
 
   edit(editData: any): void {
-    // console.log('Edit Data : ', editData);
     const dialogRef = this.dialog.open(AttendanceFormComponent, {
       data: editData,
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed after update : ', result);
       if (result) {
         this.getData();
       }
@@ -65,10 +60,10 @@ export class AttendanceComponent implements OnInit {
   }
 
   delete(id: any): void {
-    this.commonService.deleteRequestWithId('Attendance/delete', id).subscribe((data) => {
-      // console.log('Delete Resp : ', data);
-      this.getData();
-    });
+    if (confirm('Are you sure! Delete this')) {
+      this.commonService.deleteRequestWithId('Attendance/delete', id).subscribe((data) => {
+        this.getData();
+      });
+    }
   }
-
 }
